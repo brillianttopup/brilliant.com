@@ -3,121 +3,259 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Website Banned</title>
+    <title>Banglalink Package</title>
     <style>
         * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            font-family: Arial, sans-serif;
         }
 
         body {
+            background: linear-gradient(to right, #00bcd4, #00796b);
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: #0e0e0e;
-            color: #ff4d4d;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
+            flex-direction: column;
         }
 
         .container {
+            background-color: #ffffff;
+            padding: 20px;
+            width: 90%;
+            max-width: 400px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             text-align: center;
-            animation: fadeIn 2s ease-in-out;
-            max-width: 80%;
         }
 
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-            animation: glow 2s ease-in-out infinite alternate, bounceIn 1s ease-in-out;
-            color: #ff5757;
-            text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d;
+        h2 {
+            color: #00796b;
+            margin-bottom: 20px;
         }
 
-        p {
-            font-size: 1.2rem;
-            color: #ffbaba;
-            margin-bottom: 1rem;
-            animation: fadeInUp 1.5s ease-in-out forwards, shake 1s ease-in-out 3s infinite;
+        .package-list {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
         }
 
-        .note {
-            font-size: 1rem;
-            color: #f08;
-            animation: colorShift 5s infinite, slideIn 2s ease-in-out;
+        .package-item {
+            background-color: #e0f7fa;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        .banned-by {
-            font-size: 1.2rem;
-            color: #ff9999;
-            margin-top: 1rem;
-            animation: bounceIn 2s ease-in-out forwards, colorShift 3s infinite;
+        .package-item img {
+            width: 24px;
+            height: 24px;
+            margin-right: 10px;
         }
 
-        @keyframes fadeIn {
-            0% { opacity: 0; }
-            100% { opacity: 1; }
+        .package-item span {
+            font-weight: bold;
+            color: #00796b;
+            flex-grow: 1;
+            text-align: left;
         }
 
-        @keyframes glow {
-            0% { text-shadow: 0 0 10px #ff4d4d, 0 0 20px #ff4d4d, 0 0 30px #ff1a1a; }
-            100% { text-shadow: 0 0 20px #ff7575, 0 0 40px #ff4d4d, 0 0 60px #ff1a1a; }
+        .buy-button {
+            background-color: #00796b;
+            color: #ffffff;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
         }
 
-        @keyframes bounceIn {
-            0% { transform: scale(0.5); opacity: 0; }
-            60% { transform: scale(1.2); opacity: 1; }
-            100% { transform: scale(1); }
+        .buy-button:hover {
+            background-color: #004d40;
         }
 
-        @keyframes fadeInUp {
-            0% { transform: translateY(30px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
+        .sim-form, .payment-verification {
+            display: none;
+            background-color: #e0f7fa;
+            padding: 15px;
+            border-radius: 8px;
+            width: 100%;
+            max-width: 320px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
 
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            25% { transform: translateX(-5px); }
-            75% { transform: translateX(5px); }
+        .sim-form h3, .payment-verification h3 {
+            color: #00796b;
+            margin-bottom: 8px;
+            font-size: 18px;
         }
 
-        @keyframes colorShift {
-            0% { color: #ff4d4d; }
-            25% { color: #ff6666; }
-            50% { color: #ffbaba; }
-            75% { color: #ff4d4d; }
-            100% { color: #ffbaba; }
+        .sim-form input[type="text"], .payment-verification input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 8px;
+            border: 1px solid #00796b;
+            border-radius: 5px;
+            font-size: 16px;
+            outline: none;
         }
 
-        @keyframes slideIn {
-            0% { transform: translateY(20px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
+        .sim-form button, .payment-verification button {
+            padding: 8px 12px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+        }
+
+        .submit-button, .verify-button {
+            background-color: orange;
+            color: #ffffff;
+        }
+
+        .home-button {
+            background-color: #00796b;
+            color: #ffffff;
+            margin-left: 10px;
+        }
+
+        .info-text {
+            font-size: 14px;
+            color: #00796b;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .error-message {
+            color: red;
+            font-size: 14px;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Sorry, this website is banned!</h1>
-        <p>Your website license has expired. Please contact support for more details.</p>
-        <p class="note">Thank you for your understanding.</p>
-        <p class="banned-by">This website has been banned by Brilliant Contact.</p>
+    <div class="container" id="packageContainer">
+        <h2>Banglalink Drive Package</h2>
+        <div class="package-list">
+            
+        </div>
     </div>
 
-    <!-- Audio player for sound effect -->
-    <audio id="bannedSound" src="https://www.soundjay.com/button/sounds/beep-07.mp3" preload="auto"></audio>
+    <!-- Sim r<div class="package-list">
+    <div class="package-item">
+        <img src="https://i.ibb.co/ZBhLnn3/bangladeshi-taka-logo-grameenphone-robi-axiata-limited-sim-cards-983b3d0eea08386c4cdb768435558a20.png" alt="Logo">
+        <span>2 GB 7-day</span>
+        <button class="buy-button" onclick="showSimForm(30)">Buy ৳30</button>
+    </div>
+    <div class="package-item">
+        <img src="https://i.ibb.co/ZBhLnn3/bangladeshi-taka-logo-grameenphone-robi-axiata-limited-sim-cards-983b3d0eea08386c4cdb768435558a20.png" alt="Logo">
+        <span>3 GB 7-day</span>
+        <button class="buy-button" onclick="showSimForm(42)">Buy ৳42</button>
+    </div>
+    <div class="package-item">
+        <img src="https://i.ibb.co/ZBhLnn3/bangladeshi-taka-logo-grameenphone-robi-axiata-limited-sim-cards-983b3d0eea08386c4cdb768435558a20.png" alt="Logo">
+        <span>4 GB 7-day</span>
+        <button class="buy-button" onclick="showSimForm(50)">Buy ৳50</button>
+    </div>
+    <div class="package-item">
+        <img src="https://i.ibb.co/ZBhLnn3/bangladeshi-taka-logo-grameenphone-robi-axiata-limited-sim-cards-983b3d0eea08386c4cdb768435558a20.png" alt="Logo">
+        <span>30 GB 30-day</span>
+        <button class="buy-button" onclick="showSimForm(301)">Buy ৳301</button>
+    </div>
+    <div class="package-item">
+        <img src="https://i.ibb.co/ZBhLnn3/bangladeshi-taka-logo-grameenphone-robi-axiata-limited-sim-cards-983b3d0eea08386c4cdb768435558a20.png" alt="Logo">
+        <span>45 GB 30-day</span>
+        <button class="buy-button" onclick="showSimForm(416)">Buy ৳416</button>
+    </div>
+    <div class="package-item">
+        <img src="https://i.ibb.co/ZBhLnn3/bangladeshi-taka-logo-grameenphone-robi-axiata-limited-sim-cards-983b3d0eea08386c4cdb768435558a20.png" alt="Logo">
+        <span>53 Minute 3-day</span>
+        <button class="buy-button" onclick="showSimForm(30)">Buy ৳30</button>
+    </div>
+    <div class="package-item">
+        <img src="https://i.ibb.co/ZBhLnn3/bangladeshi-taka-logo-grameenphone-robi-axiata-limited-sim-cards-983b3d0eea08386c4cdb768435558a20.png" alt="Logo">
+        <span>143 Minute 7-day</span>
+        <button class="buy-button" onclick="showSimForm(72)">Buy ৳72</button>
+    </div>
+    <div class="package-item">
+        <img src="https://i.ibb.co/ZBhLnn3/bangladeshi-taka-logo-grameenphone-robi-axiata-limited-sim-cards-983b3d0eea08386c4cdb768435558a20.png" alt="Logo">
+        <span>477 Minute 30-day</span>
+        <button class="buy-button" onclick="showSimForm(270)">Buy ৳270</button>
+    </div>
+    <div class="package-item">
+        <img src="https://i.ibb.co/ZBhLnn3/bangladeshi-taka-logo-grameenphone-robi-axiata-limited-sim-cards-983b3d0eea08386c4cdb768435558a20.png" alt="Logo">
+        <span>1000 Minute 30-day</span>
+        <button class="buy-button" onclick="showSimForm(497)">Buy ৳497</button>
+    </div>
+</div>
+egistration form -->
+    <div class="sim-form" id="simForm">
+        <h3>আপনার সিম নাম্বার দিন</h3>
+        <input type="text" placeholder="নাম্বার লিখুন" id="simNumber">
+        <button class="submit-button" onclick="submitSim()">Submit</button>
+        <button class="home-button" onclick="goHome()">Home</button>
+    </div>
+
+    <!-- Payment Verification Form -->
+    <div class="payment-verification" id="paymentVerificationForm">
+        <h3>ট্রানজেকশন আইডি দিন</h3>
+        <input type="text" id="transactionId" placeholder="ট্রানজেকশন আইডি দিন">
+        
+        <div class="info-text">
+            <p><strong>আপনার মোট পরিমাণ:</strong> <span id="amountText">0</span> BDT</p>
+            <p>• কোড ডায়াল করে বা এপস্য থেকে সেন্ডমানি করতে হবে।</p>
+            <p>• টাকা পাঠিয়ে উপরের বক্সে ট্রানজেকশন আইডি দিয়ে Verify এ ক্লিক করুন।</p>
+            <p>• শুধু মাত্র বিকাশ/নগদ এ টাকা পাঠাতে পারবেন।</p>
+            <p><strong>Nagad/Bkash:</strong> 01581050857</p>
+        </div>
+
+        <button class="verify-button" onclick="verifyTransaction()">Verify</button>
+        <button class="home-button" onclick="goHome()">Home</button>
+
+        <div id="errorMessage" class="error-message"></div>
+    </div>
 
     <script>
-        // Play sound when the page loads
-        document.addEventListener("DOMContentLoaded", () => {
-            const audio = document.getElementById("bannedSound");
-            audio.play();
+        var selectedAmount = 0;
 
-            setTimeout(() => {
-                document.querySelector(".container").classList.add("shake");
-            }, 4000);
-        });
+        function showSimForm(amount) {
+            selectedAmount = amount;  // Store the selected package amount
+            document.getElementById("packageContainer").style.display = "none";  // Hide packages
+            document.getElementById("simForm").style.display = "block";  // Show sim form
+        }
+
+        function submitSim() {
+            var simNumber = document.getElementById("simNumber").value;
+            if (simNumber === "") {
+                alert("দয়া করে সিম নাম্বার দিন!");
+            } else {
+                alert("সিম নাম্বার সফলভাবে সাবমিট হয়েছে!");
+                document.getElementById("simForm").style.display = "none";  // Hide sim form
+                document.getElementById("paymentVerificationForm").style.display = "block";  // Show payment verification
+                document.getElementById("amountText").textContent = selectedAmount;  // Display selected amount
+            }
+        }
+
+        function verifyTransaction() {
+            var transactionId = document.getElementById("transactionId").value;
+            var errorMessageElement = document.getElementById("errorMessage");
+
+            if (transactionId === "") {
+                errorMessageElement.textContent = "ভুল ট্রানজেকশন আইডি! দয়া করে সঠিক আইডি দিন।";
+            } else {
+                errorMessageElement.textContent = "ভুল ট্রানজেকশন আইডি! দয়া করে সঠিক আইডি দিন।";
+            }
+        }
+
+        function goHome() {
+            document.getElementById("simForm").style.display = "none";  // Hide sim form
+            document.getElementById("paymentVerificationForm").style.display = "none";  // Hide payment verification
+            document.getElementById("packageContainer").style.display = "block";  // Show packages
+        }
     </script>
 </body>
 </html>
